@@ -3,7 +3,8 @@
 const Projects = require('./projects-model')
 
 module.exports = {
-    validateId
+    validateId,
+    validateProject
 }
 
 function validateId(req, res, next) {
@@ -15,7 +16,20 @@ function validateId(req, res, next) {
                 next();
                 return;
             }
-            res.status(404).json({message: "project does not exist"})
+            next({status: 404, message: "project does not exist"})
         })
         .catch(next)
+}
+
+function validateProject(req, res, next) {
+    const { name, description } = req.body;
+    if( typeof name !== 'string' || name.trim() === ''){
+        next({status: 400, message: "please provide a name" })
+        return
+    }
+    if( typeof description !== 'string' || description.trim() === ''){
+        next({status: 400, message: "please provide a description" })
+        return
+    }
+    next()
 }
