@@ -20,7 +20,6 @@ router.get('/:id', validateId, (req, res, next) => {
 })
 
 router.post('/', validateProject, (req, res, next) => {
-    
     Projects.insert(req.body)
         .then(project => res.status(201).json(project))
         .catch(next)
@@ -33,7 +32,6 @@ router.put('/:id', validateId, validateProject, (req, res, next) => {
 })
 
 router.delete('/:id', validateId, (req, res, next) => {
-    console.log('delete ping')
     Projects.remove(req.project.id)
         .then(records => res.status(200).send())
         .catch(next)

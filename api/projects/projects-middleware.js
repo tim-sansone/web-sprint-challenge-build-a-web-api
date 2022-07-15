@@ -8,7 +8,6 @@ module.exports = {
 }
 
 function validateId(req, res, next) {
-    console.log('validate ID ping')
     const { id } = req.params;
     Projects.get(id)
         .then(project => {
@@ -24,7 +23,6 @@ function validateId(req, res, next) {
 }
 
 function validateProject(req, res, next) {
-    console.log('validate post ping')
     const { name, description, completed } = req.body;
     if( typeof name !== 'string' || name.trim() === ''){
         next({status: 400, message: "please provide a name" })
