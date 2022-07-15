@@ -13,6 +13,9 @@ server.use(express.json());
 const projectsRouter = require('./projects/projects-router');
 server.use('/api/projects', projectsRouter)
 
+const actionsRouter = require('./actions/actions-router');
+server.use('/api/actions', actionsRouter)
+
 server.get('/', (req, res) => {
     res.send('<h1>The Server Is Online</h1>')
 })
