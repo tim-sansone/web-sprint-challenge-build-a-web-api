@@ -34,6 +34,7 @@ function validateProject(req, res, next) {
     }
     if(typeof completed !== 'boolean'){
         next({status: 400, message: "please designate completion status"})
+        return
     }
     next()
 }
