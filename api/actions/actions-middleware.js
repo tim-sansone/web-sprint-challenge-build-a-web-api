@@ -11,7 +11,6 @@ module.exports = {
 }
 
 function validateId(req, res, next) {
-    console.log('validateId ping')
     const { id } = req.params;
     Actions.get(id)
         .then(action => {
@@ -26,7 +25,6 @@ function validateId(req, res, next) {
 }
 
 function validateProjectId(req, res, next) {
-    console.log("validate project id ping")
     const { project_id } = req.body
     Projects.get(project_id)
         .then(project => {
@@ -40,7 +38,6 @@ function validateProjectId(req, res, next) {
 }
 
 function validateAction(req, res, next) {
-    console.log("validate action ping")
     const { description, notes, completed } = req.body
     if( typeof description !== 'string' || description.trim() === ''){
         next({status: 400, message: "please provide a description" })

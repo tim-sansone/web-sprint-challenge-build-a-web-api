@@ -12,7 +12,6 @@ function validateId(req, res, next) {
     Projects.get(id)
         .then(project => {
             if(project){
-                console.log(project)
                 req.project = project;
                 next();
                 return;

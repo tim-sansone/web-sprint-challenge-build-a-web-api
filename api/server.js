@@ -16,10 +16,6 @@ server.use('/api/projects', projectsRouter)
 const actionsRouter = require('./actions/actions-router');
 server.use('/api/actions', actionsRouter)
 
-server.get('/', (req, res) => {
-    res.send('<h1>The Server Is Online</h1>')
-})
-
 server.use((error, req, res, next) => {
     res.status(error.status || 500).json({message: error.message || "internal server error"})
 })
