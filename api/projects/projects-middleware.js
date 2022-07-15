@@ -8,7 +8,7 @@ module.exports = {
 }
 
 function validateId(req, res, next) {
-    console.log('validat ID ping')
+    console.log('validate ID ping')
     const { id } = req.params;
     Projects.get(id)
         .then(project => {
