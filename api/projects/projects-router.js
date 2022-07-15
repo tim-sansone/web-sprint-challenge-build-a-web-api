@@ -38,3 +38,9 @@ router.delete('/:id', validateId, (req, res, next) => {
         .then(records => res.status(200).send())
         .catch(next)
 })
+
+router.get('/:id/actions', validateId, (req, res, next) => {
+    Projects.getProjectActions(req.project.id)
+        .then(actions => res.json(actions))
+        .catch(next)
+})
